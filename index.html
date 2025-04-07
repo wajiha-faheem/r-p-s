@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+         <h1>Rock Paper Scissor</h1>
+         <p>Choose You'r Move </p>
+         <button onclick="playGame('rock')">Rock</button>
+         <button onclick="playGame('paper')">Paper</button>
+         <button onclick="playGame('scissor')">Scissor</button>
+         <p class="us" id="us">Your Choice ____</p>
+         <p class="cp" id="cp">Computer Choice ____</p>
+         <div class="result" id="result">Your result will appear here!</div>
+    </div>
+    <script>
+        function playGame(userChoice){
+        const choices = ['rock','paper','scissor'];
+        const computerIndex =Math.floor(Math.random() *3);
+        const computerChoice = choices[computerIndex];
+        let result;
+        if (userChoice===computerChoice) {
+            result="It's a draw!";
+        }
+        else if(
+            (userChoice==='rock' && computerChoice==='scissor')||
+            (userChoice==='scissor' && computerChoice==='paper')||
+            (userChoice==='paper' && computerChoice==='rock')
+        ){
+            result="You win."
+        }
+        else{
+            result="you lose."
+        }
+    
+        document.getElementById('us').textContent = `
+        You chose ${userChoice},
+         
+      `;
+        document.getElementById('cp').textContent = `
+        
+         computer chose ${computerChoice}.
+        
+      `;
+        document.getElementById('result').textContent = `
+        
+          ${result}
+      `;
+    };
+</script>
+</body>
+</html>
